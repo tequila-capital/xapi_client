@@ -7,7 +7,7 @@ import grpc
 
 import grpc_generated.market_data_pb2 as market__data__pb2
 
-GRPC_GENERATED_VERSION = '1.76.0'
+GRPC_GENERATED_VERSION = '1.78.0'
 GRPC_VERSION = grpc.__version__
 _version_not_supported = False
 
@@ -157,6 +157,18 @@ class MarketDataServiceStub(object):
             response_deserializer=market__data__pb2.UnSubscribeTickDataResponse.FromString,
             _registered_method=True,
         )
+        self.UnSubscribeStreamMarketData = channel.unary_unary(
+            '/MarketDataService/UnSubscribeStreamMarketData',
+            request_serializer=market__data__pb2.UnSubscribeStreamMarketDataRequest.SerializeToString,
+            response_deserializer=market__data__pb2.UnSubscribeStreamMarketDataResponse.FromString,
+            _registered_method=True,
+        )
+        self.StreamMarketData = channel.stream_stream(
+            '/MarketDataService/StreamMarketData',
+            request_serializer=market__data__pb2.MarketDataStreamRequest.SerializeToString,
+            response_deserializer=market__data__pb2.MarketDataStreamResponse.FromString,
+            _registered_method=True,
+        )
 
 
 class MarketDataServiceServicer(object):
@@ -282,6 +294,18 @@ class MarketDataServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def UnSubscribeStreamMarketData(self, request, context):  # noqa: N802
+        """Bidirectional streaming API for real-time Level 2 market data"""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def StreamMarketData(self, request_iterator, context):  # noqa: N802
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_MarketDataServiceServicer_to_server(servicer, server):  # noqa: N802
     rpc_method_handlers = {
@@ -384,6 +408,16 @@ def add_MarketDataServiceServicer_to_server(servicer, server):  # noqa: N802
             servicer.UnSubscribeTickData,
             request_deserializer=market__data__pb2.UnSubscribeTickDataRequest.FromString,
             response_serializer=market__data__pb2.UnSubscribeTickDataResponse.SerializeToString,
+        ),
+        'UnSubscribeStreamMarketData': grpc.unary_unary_rpc_method_handler(
+            servicer.UnSubscribeStreamMarketData,
+            request_deserializer=market__data__pb2.UnSubscribeStreamMarketDataRequest.FromString,
+            response_serializer=market__data__pb2.UnSubscribeStreamMarketDataResponse.SerializeToString,
+        ),
+        'StreamMarketData': grpc.stream_stream_rpc_method_handler(
+            servicer.StreamMarketData,
+            request_deserializer=market__data__pb2.MarketDataStreamRequest.FromString,
+            response_serializer=market__data__pb2.MarketDataStreamResponse.SerializeToString,
         ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -986,6 +1020,66 @@ class MarketDataService(object):
             '/MarketDataService/UnSubscribeTickData',
             market__data__pb2.UnSubscribeTickDataRequest.SerializeToString,
             market__data__pb2.UnSubscribeTickDataResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True,
+        )
+
+    @staticmethod
+    def UnSubscribeStreamMarketData(  # noqa: N802
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/MarketDataService/UnSubscribeStreamMarketData',
+            market__data__pb2.UnSubscribeStreamMarketDataRequest.SerializeToString,
+            market__data__pb2.UnSubscribeStreamMarketDataResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True,
+        )
+
+    @staticmethod
+    def StreamMarketData(  # noqa: N802
+        request_iterator,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.stream_stream(
+            request_iterator,
+            target,
+            '/MarketDataService/StreamMarketData',
+            market__data__pb2.MarketDataStreamRequest.SerializeToString,
+            market__data__pb2.MarketDataStreamResponse.FromString,
             options,
             channel_credentials,
             insecure,

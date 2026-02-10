@@ -7,7 +7,7 @@ import grpc
 
 import grpc_generated.utilities_pb2 as utilities__pb2
 
-GRPC_GENERATED_VERSION = '1.76.0'
+GRPC_GENERATED_VERSION = '1.78.0'
 GRPC_VERSION = grpc.__version__
 _version_not_supported = False
 
@@ -115,6 +115,36 @@ class UtilityServicesStub(object):
             response_deserializer=utilities__pb2.StrategyListResponse.FromString,
             _registered_method=True,
         )
+        self.GetFirmName = channel.unary_unary(
+            '/UtilityServices/GetFirmName',
+            request_serializer=utilities__pb2.GetFirmNameRequest.SerializeToString,
+            response_deserializer=utilities__pb2.GetFirmNameResponse.FromString,
+            _registered_method=True,
+        )
+        self.UserExists = channel.unary_unary(
+            '/UtilityServices/UserExists',
+            request_serializer=utilities__pb2.UserExistsRequest.SerializeToString,
+            response_deserializer=utilities__pb2.UserExistsResponse.FromString,
+            _registered_method=True,
+        )
+        self.GetStrategyData = channel.unary_unary(
+            '/UtilityServices/GetStrategyData',
+            request_serializer=utilities__pb2.GetStrategyDataRequest.SerializeToString,
+            response_deserializer=utilities__pb2.GetStrategyDataResponse.FromString,
+            _registered_method=True,
+        )
+        self.CreateStrategy = channel.unary_unary(
+            '/UtilityServices/CreateStrategy',
+            request_serializer=utilities__pb2.CreateStrategyRequest.SerializeToString,
+            response_deserializer=utilities__pb2.CreateStrategyResponse.FromString,
+            _registered_method=True,
+        )
+        self.UpdateStrategy = channel.unary_unary(
+            '/UtilityServices/UpdateStrategy',
+            request_serializer=utilities__pb2.UpdateStrategyRequest.SerializeToString,
+            response_deserializer=utilities__pb2.UpdateStrategyResponse.FromString,
+            _registered_method=True,
+        )
         self.GetTodaysActivityJson = channel.unary_unary(
             '/UtilityServices/GetTodaysActivityJson',
             request_serializer=utilities__pb2.TodaysActivityJsonRequest.SerializeToString,
@@ -125,6 +155,12 @@ class UtilityServicesStub(object):
             '/UtilityServices/GetUserRoutes',
             request_serializer=utilities__pb2.GetUserRoutesRequest.SerializeToString,
             response_deserializer=utilities__pb2.GetUserRoutesResponse.FromString,
+            _registered_method=True,
+        )
+        self.GetUserRouteProps = channel.unary_unary(
+            '/UtilityServices/GetUserRouteProps',
+            request_serializer=utilities__pb2.GetUserRoutePropsRequest.SerializeToString,
+            response_deserializer=utilities__pb2.GetUserRoutePropsResponse.FromString,
             _registered_method=True,
         )
 
@@ -210,6 +246,36 @@ class UtilityServicesServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetFirmName(self, request, context):  # noqa: N802
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def UserExists(self, request, context):  # noqa: N802
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetStrategyData(self, request, context):  # noqa: N802
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CreateStrategy(self, request, context):  # noqa: N802
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def UpdateStrategy(self, request, context):  # noqa: N802
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def GetTodaysActivityJson(self, request, context):  # noqa: N802
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -217,6 +283,12 @@ class UtilityServicesServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def GetUserRoutes(self, request, context):  # noqa: N802
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetUserRouteProps(self, request, context):  # noqa: N802
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -290,6 +362,31 @@ def add_UtilityServicesServicer_to_server(servicer, server):  # noqa: N802
             request_deserializer=utilities__pb2.StrategyListRequest.FromString,
             response_serializer=utilities__pb2.StrategyListResponse.SerializeToString,
         ),
+        'GetFirmName': grpc.unary_unary_rpc_method_handler(
+            servicer.GetFirmName,
+            request_deserializer=utilities__pb2.GetFirmNameRequest.FromString,
+            response_serializer=utilities__pb2.GetFirmNameResponse.SerializeToString,
+        ),
+        'UserExists': grpc.unary_unary_rpc_method_handler(
+            servicer.UserExists,
+            request_deserializer=utilities__pb2.UserExistsRequest.FromString,
+            response_serializer=utilities__pb2.UserExistsResponse.SerializeToString,
+        ),
+        'GetStrategyData': grpc.unary_unary_rpc_method_handler(
+            servicer.GetStrategyData,
+            request_deserializer=utilities__pb2.GetStrategyDataRequest.FromString,
+            response_serializer=utilities__pb2.GetStrategyDataResponse.SerializeToString,
+        ),
+        'CreateStrategy': grpc.unary_unary_rpc_method_handler(
+            servicer.CreateStrategy,
+            request_deserializer=utilities__pb2.CreateStrategyRequest.FromString,
+            response_serializer=utilities__pb2.CreateStrategyResponse.SerializeToString,
+        ),
+        'UpdateStrategy': grpc.unary_unary_rpc_method_handler(
+            servicer.UpdateStrategy,
+            request_deserializer=utilities__pb2.UpdateStrategyRequest.FromString,
+            response_serializer=utilities__pb2.UpdateStrategyResponse.SerializeToString,
+        ),
         'GetTodaysActivityJson': grpc.unary_unary_rpc_method_handler(
             servicer.GetTodaysActivityJson,
             request_deserializer=utilities__pb2.TodaysActivityJsonRequest.FromString,
@@ -299,6 +396,11 @@ def add_UtilityServicesServicer_to_server(servicer, server):  # noqa: N802
             servicer.GetUserRoutes,
             request_deserializer=utilities__pb2.GetUserRoutesRequest.FromString,
             response_serializer=utilities__pb2.GetUserRoutesResponse.SerializeToString,
+        ),
+        'GetUserRouteProps': grpc.unary_unary_rpc_method_handler(
+            servicer.GetUserRouteProps,
+            request_deserializer=utilities__pb2.GetUserRoutePropsRequest.FromString,
+            response_serializer=utilities__pb2.GetUserRoutePropsResponse.SerializeToString,
         ),
     }
     generic_handler = grpc.method_handlers_generic_handler('UtilityServices', rpc_method_handlers)
@@ -701,6 +803,156 @@ class UtilityServices(object):
         )
 
     @staticmethod
+    def GetFirmName(  # noqa: N802
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/UtilityServices/GetFirmName',
+            utilities__pb2.GetFirmNameRequest.SerializeToString,
+            utilities__pb2.GetFirmNameResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True,
+        )
+
+    @staticmethod
+    def UserExists(  # noqa: N802
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/UtilityServices/UserExists',
+            utilities__pb2.UserExistsRequest.SerializeToString,
+            utilities__pb2.UserExistsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True,
+        )
+
+    @staticmethod
+    def GetStrategyData(  # noqa: N802
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/UtilityServices/GetStrategyData',
+            utilities__pb2.GetStrategyDataRequest.SerializeToString,
+            utilities__pb2.GetStrategyDataResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True,
+        )
+
+    @staticmethod
+    def CreateStrategy(  # noqa: N802
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/UtilityServices/CreateStrategy',
+            utilities__pb2.CreateStrategyRequest.SerializeToString,
+            utilities__pb2.CreateStrategyResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True,
+        )
+
+    @staticmethod
+    def UpdateStrategy(  # noqa: N802
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/UtilityServices/UpdateStrategy',
+            utilities__pb2.UpdateStrategyRequest.SerializeToString,
+            utilities__pb2.UpdateStrategyResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True,
+        )
+
+    @staticmethod
     def GetTodaysActivityJson(  # noqa: N802
         request,
         target,
@@ -749,6 +1001,36 @@ class UtilityServices(object):
             '/UtilityServices/GetUserRoutes',
             utilities__pb2.GetUserRoutesRequest.SerializeToString,
             utilities__pb2.GetUserRoutesResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True,
+        )
+
+    @staticmethod
+    def GetUserRouteProps(  # noqa: N802
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/UtilityServices/GetUserRouteProps',
+            utilities__pb2.GetUserRoutePropsRequest.SerializeToString,
+            utilities__pb2.GetUserRoutePropsResponse.FromString,
             options,
             channel_credentials,
             insecure,
